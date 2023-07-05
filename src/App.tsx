@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import Confetti from "react-confetti";
 
 import "./App.css";
-const gameIcons = ["🏰", "🧝‍♂️", "💂‍♀️", "👩🏽‍🚒", "🧙‍♂️", "👺", "🤖", "🐯", "🦕"];
+const gameIcons = ["🏰", "🦥", "👨🏽‍🚒", "🐱", "🧙", "👺", "🤖", "🐼", "🦕"];
 function App() {
-  const [pieces, setPieces] = useState([]);
+  const [pieces, setPieces] = useState<any[]>([]);
   const isGameCompleted = useMemo(() => {
     if (pieces.length > 0 && pieces.every((piece) => piece.solved)) {
       return true;
@@ -30,7 +30,7 @@ function App() {
     startGame();
   }, []);
 
-  const handleActive = (data) => {
+  const handleActive = (data: any) => {
     const flippedData = pieces.filter((data) => data.flipped && !data.solved);
     if (flippedData.length === 2) return;
     const newPieces = pieces.map((piece) => {
